@@ -1,5 +1,5 @@
 # Multivariate Cox regression with three penalities including least absolute shrinkage and selection operator(Lasso), Adaptive lasso and Elastic net algorithms for informative prognostic-related genes selection.
-# 
+# we need two Package in R 
 library(glmnet)
 library(survival)
 dat<-read.csv("working directroy", row.names = 1)
