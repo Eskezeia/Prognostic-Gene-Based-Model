@@ -1,9 +1,9 @@
 Paper "Construction and Validation of a Prognostic Gene-Based Model for Overall Survival Prediction in Hepatocellular Carcinoma Using an Integrated Statistical and Bioinformatic Approach"
 
-##**Introdduction** 
+**Introdduction** 
 
 
-##**Data preparation**
+**Data preparation**
 
 Identifying differentially expressed genes 
 
@@ -31,10 +31,10 @@ TCGA.DD.A4NK.01A.11R.A28V.07	39.75	1	11.32406	14.00305	12.48706	…	6.3055
 
 
 Datasets used in this study
-1. TCGA-LIHC dataset(http://gdac.broadinstitute.org/)
-2. GEne expression profiles from the gene expression omnibus (GEO)(https://www.ncbi.nlm.nih.gov/geo/) inccluding GSE112790, GSE84402, and GSE45267.
-3. International Cancer Genome Consortium (ICGC LIRI-JP dataset) dataset(https://icgc.org/)
-4. China Medical University Hospital HCC dataset
+> 1) TCGA-LIHC dataset(http://gdac.broadinstitute.org/)
+> 2) GEne expression profiles from the gene expression omnibus (GEO)(https://www.ncbi.nlm.nih.gov/geo/) inccluding GSE112790, GSE84402, and GSE45267.
+> 3) International Cancer Genome Consortium (ICGC LIRI-JP dataset) dataset(https://icgc.org/)
+> 4) China Medical University Hospital HCC dataset
 
 
 
