@@ -104,9 +104,83 @@ print(res)
 top <- weightable(res)
 top
 
+# Risk score model construction based Best subset  prognostic genes 
+model<- coxph(Surv(os,event) ~. , data =dat)
+summary(model)
+# 
+dat<-read.csv("wd path")
+fit<- survfit(Surv(dat$os,dat$event) ~dat$RS, data = dat)# Rs-Risk score
+fit<- survfit(Surv(dat$os,dat$event) ~dat$RS, data = dat)
+fit
+ggsurvplot(fit, data = dat, pval = T,
+           legend.labs = c("High-risk", "Low-risk"),
+           risk.table = TRUE,
+           xlab = "time(months)", 
+           ylab = "survival probablity",
+           legend.title = " Risk",
+           risk.table.y.text.col = T,
+           risk.table.y.text = T)
+# Prepare dataset having OS time and status and Risk socre each HCC patients
+# dat<-read.csv("wd path", row.names = 1)
+library(timeROC)
+library(survival)
+# evaluate DDST cognitive score as a prognostic tool for
+# dementia onset, accounting for death without dementia competing risk.
+ROC.DSST<-timeROC(T=dat$os,delta=dat$event,
+                  marker=dat$RS,cause=1,
+                  weighting="cox",
+                  times=c(12,24,36),ROC=TRUE)
+ROC.DSST
+plot(ROC.DSST,time=12,title=FALSE,lwd=2)
+plot(ROC.DSST,time=36,col="dodgerblue4",add=TRUE,title=FALSE,lwd=2)
+plot(ROC.DSST,time=60,col="chartreuse",add=TRUE,title=FALSE,lwd=2)
+plot(ROC.DSST,time=120,col="green",add=TRUE,title=FALSE,lwd=2)
+legend("bottomright",text.font = 2, c("1-year(AUC = )", "2-year (AUC =)", "3-year (AUC = )"),col=c("red","dodgerblue4", "Green" "),lwd=2, cex = 0.75)
+#******************************************************
 
+# different model Comparison AUC curve of markers in R
+ROC.DSST1<-timeROC(T=dat$os,delta=dat$event,
+                  marker=dat$RS,cause=1,
+                  weighting="cox",
+                  times=c(60),
+                  ROC=TRUE)
 
+ROC.DSST2<-timeROC(T=dat$os,delta=dat$event,
+                   marker=-dat$GHR,cause=1,
+                   weighting="cox",
+                   times=c(60),
+                   ROC=TRUE)
 
+ROC.DSST3<-timeROC(T=dat$os,delta=dat$event,
+                   marker=-dat$LCAT,cause=1,
+                   weighting="cox",
+                   times=c(60),
+                   ROC=TRUE)
+
+ROC.DSST4<-timeROC(T=dat$os,delta=dat$event,
+                   marker=dat$FAM83D,cause=1,
+                   weighting="cox",
+                   times=c(60),
+                   ROC=TRUE)
+
+ROC.DSST5<-timeROC(T=dat$os,delta=dat$event,
+                   marker=-dat$ADH4,cause=1,
+                   weighting="cox",
+                   times=c(60),
+                   ROC=TRUE)
+
+ROC.DSST1
+ROC.DSST2
+ROC.DSST3
+ROC.DSST4
+ROC.DSST5
+plot(ROC.DSST1,time=60,title=FALSE,lwd=2)
+plot(ROC.DSST2,time=60,col="dodgerblue4",add=TRUE,title=FALSE,lwd=2)
+plot(ROC.DSST3,time=60,col="green",add=TRUE,title=FALSE,lwd=2)
+plot(ROC.DSST4,time=60,col="orange",add=TRUE,title=FALSE,lwd=2)
+plot(ROC.DSST5,time=60,col="blue",add=TRUE,title=FALSE,lwd=2)
+legend("bottomright",c("4-gene signature(AUC =0.780)","GHR(AUC =0.692)", "LCAT (AUC = 0.661)","FAM83D (AUC = 0.70)", "ADH4 (AUC = 0.694)"), col=c("red","dodgerblue4","green", "orange", "blue"),lwd=2, cex = 0.75)
+#*****************************
 
 
 
