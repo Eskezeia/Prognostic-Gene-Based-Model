@@ -10,8 +10,8 @@ Identifying differentially expressed genes
 Input files
 Frist we need to organize the input file for normalized gene expression and overall survival time and status usingTCGA dataset. For example, the input file of survival related gene selection have this kind matrix format.
 
-ID	os	event	GHR	ADH4	LCAT	…	FAM83D
-TCGA.WX.AA46.01A.11R.A39D.07	24.84	0	11.68619	16.60054	12.11408	…	5.088862
+|ID	|os	|event	|GHR	|ADH4	|LCAT|...|FAM83D|
+|TCGA.WX.AA46.01A.11R.A39D.07|	24.84|	0	11.68619|	16.60054|	12.11408|...|5.088862|
 TCGA.BC.A10X.01A.11R.A131.07	25.3	1	13.36989	16.53799	11.884	…	6.215566
 TCGA.G3.AAV0.01A.11R.A37K.07	15.64	0	12.4672	15.21704	12.72918	…	6.026993
 TCGA.G3.A5SK.01A.11R.A27V.07	24.44	0	13.11411	15.94487	11.9492	…	6.160402
