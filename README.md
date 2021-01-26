@@ -1,4 +1,6 @@
 Paper "Construction and Validation of a Prognostic Gene-Based Model for Overall Survival Prediction in Hepatocellular Carcinoma Using an Integrated Statistical and Bioinformatic Approach"
+
+
 ****Under Development****
 
 **Introdduction** 
@@ -8,7 +10,7 @@ Paper "Construction and Validation of a Prognostic Gene-Based Model for Overall 
 
 Identifying differentially expressed genes 
 
-Input files
+**Input files**
 Frist we need to organize the input file for normalized gene expression and overall survival time and status usingTCGA dataset. For example, the input file of survival related gene selection have this kind matrix format.
 
 Datasets used in this study
