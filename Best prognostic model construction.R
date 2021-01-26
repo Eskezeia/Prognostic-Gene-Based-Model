@@ -120,6 +120,7 @@ ggsurvplot(fit, data = dat, pval = T,
            legend.title = " Risk",
            risk.table.y.text.col = T,
            risk.table.y.text = T)
+
 # Prepare dataset having OS time and status and Risk socre each HCC patients
 # dat<-read.csv("wd path", row.names = 1)
 library(timeROC)
@@ -134,4 +135,25 @@ plot(ROC.DSST,time=36,col="dodgerblue4",add=TRUE,title=FALSE,lwd=2)
 plot(ROC.DSST,time=60,col="chartreuse",add=TRUE,title=FALSE,lwd=2)
 legend("bottomright",text.font = 2, c("1-year(AUC = o.865 )", "2-year (AUC = 0.854)", "3-year (AUC = 0.779)"),col=c("red","dodgerblue4", "Green" "),lwd=2, cex = 0.75)
 #******************************************************
+# Diagnostic performance of Risk model 
+library(pROC)
+library(parallel)
+dat<-read.csv("4-gene signture expression profiles of HCC and normal tissues.csv")
+class(dat)
+#***********************=========================================
+model1<-plot.roc(dat$Group, dat$GHR + dat$ADH4 + dat$        # data
+                 
+                 percent = TRUE,                    # show all values in percent
+                 auc=c(0, 100), 
+                 #partial.auc.correct=TRUE,          # define a partial AUC (pAUC)
+                 print.auc=TRUE,show.thres=TRUE,                    
+                 #display pAUC value on the plot with following options:
+                 #print.auc.pattern = "Corrected pAUC (100-90%% SP):\n%.1f%%",
+                 #print.auc.col = "#1c61b6",
+                 #auc.polygon = TRUE, 
+                 #auc.polygon.col = "#1c61b6",       # show pAUC as a polygon
+                 #max.auc.polygon = TRUE, 
+                 #max.auc.polygon.col = "#1c61b622", # also show the 100% polygon
+                 main = "4-gene signatures",
+                 ci = TRUE)
 
