@@ -1,6 +1,6 @@
 # Univarite analysis
 library(survival)
-dat1<-read.csv("datafileName.csv", header = T)
+dat1<-read.csv("datafileName.csv", header = T) # inptfile is matrix of DEGs normalized expression profile and survival information 
 dat2<-dat1[,-1]
 y<-dat2$os
 y<-as.numeric(y)
@@ -37,7 +37,7 @@ result<-as.data.frame(res) # results of uivariate Cox Regression Analysis
 # we need two Package in R 
 library(glmnet)
 library(survival)
-dat<-read.csv("working directroy", row.names = 1)
+dat<-read.csv("datafileName.csv", row.names = 1) # inptfile is matrix of survival related DEGs normalized expression profile and survival information 
 set.seed(1234)
 # Prognostic gene with Elastic net algorithm selection 
 y <- Surv(dat$os, dat$event) # os-overall survival, event-overall survival status
