@@ -1,6 +1,6 @@
 # Univarite analysis
 library(survival)
-dat1<-read.csv("inputfile.csv", header = T) # inptfile is matrix of DEGs normalized expression profile and survival information {Refer TCGA dataset given the link below} 
+dat1<-read.csv("inputfile.csv", header = T) # inptfile is matrix of gene normalized expression profiles and survival information {Refer TCGA dataset given the link below} 
 dat2<-dat1[,-1]
 y<-dat2$os
 y<-as.numeric(y)
