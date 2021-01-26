@@ -1,7 +1,4 @@
-# I am running this code and it works. Save the data in one file and setwd in the same folder folder.
-# do step by step, if there is any problem inform me or may be   we discuss via skype, Thenk you.
-# save the data attached blelow and do DEG analysis.
-
+# Identification of Differential expressed genes(DEGs)
 library(limma)
 library(edgeR)
 setwd("C:/Users/Reon-Bruk/Desktop/geneT2/HCC")
