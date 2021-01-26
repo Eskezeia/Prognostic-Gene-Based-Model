@@ -138,10 +138,10 @@ legend("bottomright",text.font = 2, c("1-year(AUC = o.865 )", "2-year (AUC = 0.8
 # Diagnostic performance of Risk model 
 library(pROC)
 library(parallel)
-dat<-read.csv("4-gene signture expression profiles of HCC and normal tissues.csv")
+dat<-read.csv("4-gene signture expression profiles.csv")
 class(dat)
 #***********************=========================================
-model1<-plot.roc(dat$Group, dat$GHR + dat$ADH4 + dat$        # data
+model1<-plot.roc(dat$Group, dat$4-gene.signature        # data
                  
                  percent = TRUE,                    # show all values in percent
                  auc=c(0, 100), 
