@@ -1,6 +1,6 @@
 # Univarite analysis
 library(survival)
-dat1<-read.csv("datafileName.csv", header = T) # inptfile is matrix of DEGs normalized expression profile and survival information {Refer TCGA dataset given the link below} 
+dat1<-read.csv("inputfile.csv", header = T) # inptfile is matrix of DEGs normalized expression profile and survival information {Refer TCGA dataset given the link below} 
 dat2<-dat1[,-1]
 y<-dat2$os
 y<-as.numeric(y)
@@ -37,14 +37,14 @@ result<-as.data.frame(res) # results of uivariate Cox Regression Analysis
 # we need two Package in R 
 library(glmnet)
 library(survival)
-dat<-read.csv("datafileName.csv", row.names = 1) # inptfile is matrix of survival related DEGs normalized expression profile and survival information 
+dat<-read.csv("inputfile.csv", row.names = 1) # inptfile is matrix of survival related DEGs normalized expression profile and survival information 
 set.seed(1234)
 # Prognostic gene with Elastic net algorithm selection 
 y <- Surv(dat$os, dat$event) # os-overall survival, event-overall survival status
 x<-model.matrix(y~., dat[,c(-1:-2)])
 cv.fit <- cv.glmnet(x,y, family="cox",nfold = 10, alpha= 0.5)
 plot(cv.fit)
-fit <- glmnet(x,y, family = "cox", alpha = 1)
+fit <- glmnet(x,y, family = "cox", alpha =0.5)
 plot(fit)
 cv.fit$lambda.min
 
@@ -116,7 +116,7 @@ best_alasso_coef1 # extracting prognostic gene selected by Adaptive lasso
 #best subset regression analysis 
 library(survival)
 library(glmulti)
-dat2<-read.csv("working directory path", row.names = 1)
+dat2<-read.csv("inputfile", row.names = 1) # inputfile containing the identifed prognostic genes from penalized models and survival time&event information 
 dat <- within(dat, {
   survival.vector    <- Surv(dat$os, dat$event)})
 #*************************************************************
@@ -143,7 +143,7 @@ top
 model<- coxph(Surv(os,event) ~. , data =dat)
 summary(model)
 # 
-dat<-read.csv("wd path")
+dat<-read.csv("inptfile.csv") # Inputfile containing Risk score calculated from best subset prognostic genes
 fit<- survfit(Surv(dat$os,dat$event) ~dat$RS, data = dat)# Rs-Risk score
 fit<- survfit(Surv(dat$os,dat$event) ~dat$RS, data = dat)
 fit
@@ -157,7 +157,7 @@ ggsurvplot(fit, data = dat, pval = T,
            risk.table.y.text = T)
 
 # Prepare dataset having OS time and status and Risk socre each HCC patients
-# dat<-read.csv("wd path", row.names = 1)
+# dat<-read.csv("inputfile", row.names = 1) # example CMUH dataset: Survival_4-gene expression-Profiles.csv
 library(timeROC)
 library(survival)
 ROC.DSST<-timeROC(T=dat$os,delta=dat$event,
@@ -173,7 +173,7 @@ legend("bottomright",text.font = 2, c("1-year(AUC = o.865 )", "2-year (AUC = 0.8
 # Diagnostic performance of Risk model 
 library(pROC)
 library(parallel)
-dat<-read.csv("4-gene signture expression profiles.csv")
+dat<-read.csv("inputfile.csv") # example CMUH dataset:4-gene signture expression profiles .csv
 class(dat)
 #***********************=========================================
 model1<-plot.roc(dat$Group, dat$4-gene.signature        # data
