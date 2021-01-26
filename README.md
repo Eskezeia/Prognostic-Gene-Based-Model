@@ -9,6 +9,6 @@
 > 3) International Cancer Genome Consortium (ICGC LIRI-JP dataset) dataset(https://icgc.org/)
 > 4) China Medical University Hospital HCC dataset
  > a). Surcival input file is:Survival 4-gene Profile
- > b). Expression level of 4-gene signture is: 4-gene signture expression profiles of HCC patients 
+ > b). Survival_4-gene expression-Profiles.csv
 
 
