@@ -3,17 +3,6 @@
 
 ## **Under Development**
 
-## **Introdduction** 
-
-
-## **Data preparation**
-
-Identifying differentially expressed genes 
-
-## **Input files**
-CMUH surviva input file is 
-
-
 ## **Datasets used in this study**
 > 1) TCGA-LIHC dataset(http://gdac.broadinstitute.org/)
 > 2) GEne expression profiles from the gene expression omnibus (GEO)(https://www.ncbi.nlm.nih.gov/geo/) inccluding GSE112790, GSE84402, and GSE45267.
