@@ -11,16 +11,15 @@
 Identifying differentially expressed genes 
 
 ## **Input files**
-
-Frist, we need to organize the input file for normalized gene expression and overall survival time and status usingTCGA dataset. For example, the input file of survival related gene selection have this kind matrix format.
+CMUH surviva input file is 
 
 
 ## **Datasets used in this study**
 > 1) TCGA-LIHC dataset(http://gdac.broadinstitute.org/)
 > 2) GEne expression profiles from the gene expression omnibus (GEO)(https://www.ncbi.nlm.nih.gov/geo/) inccluding GSE112790, GSE84402, and GSE45267.
 > 3) International Cancer Genome Consortium (ICGC LIRI-JP dataset) dataset(https://icgc.org/)
-> 4) China Medical University Hospital HCC dataset[4-gene signture expression profiles of HCC patients and Survival 4-gene Profiles]
-
-
+> 4) China Medical University Hospital HCC dataset
+ >> a). Surcival input file is:Survival 4-gene Profile
+ >> b) Expression level of 4-gene signture is: 4-gene signture expression profiles of HCC patients 
 
 
