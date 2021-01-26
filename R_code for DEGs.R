@@ -1,14 +1,14 @@
 # Identification of Differential expressed genes(DEGs)
 library(limma)
 library(edgeR)
-setwd("C:/Users/Reon-Bruk/Desktop/geneT2/HCC")
-dat1<-read.csv("mRNA_HCC.csv",row.names=1)
+setwd("wdpath") # working directroy 
+dat1<-read.csv("inputfileName",row.names=1) # Normalized gene expression matrix{ Refer TCGA dataset the link given below}
 dim(dat1)
 dat2<-log2(dat1 + 1)
 
 dat3<-as.matrix(dat2)
 dim(dat3)
-design.mat<-read.csv("design_HCC_gene.csv")
+design.mat<-read.csv("design_HCC_gene.csv") # matrix samples containing tissue type (Normal and Tumor)
 design.mat<-design.mat[,-1]
 design.mat
 dim(design.mat)
@@ -25,24 +25,7 @@ fit<-lmFit(dat3, design.mat)
 fit2<-contrasts.fit(fit, contrast.mat)
 fit3<-eBayes(fit2)
 deg<-topTable(fit3) # top ranked DEGs
-setwd("C:/Users/Reon-Bruk/Desktop/cmu_geneData")
 
-dat1<-read.csv("HCC_FiveGene_TPM_survival2.csv")
-write.csv(dat1, "dat.csv")
-dat2<-read.csv("dat.csv")
-head(dat2)
-model<- coxph(Surv(os, event) ~ dat2$LCATx, data =dat2)
-summary(model)
-model<- coxph(Surv(y.time,y.status) ~ RSx, data =dat1)
-summary(model)
-
-fit2 <- survfit(Surv(y.time,y.status) ~ dat1$RSx, data = dat1)
-fit2
-ggsurvplot(fit2, data = dat1, pval = T,
-           legend.labs = c("l1x ", "l2x"), 
-           xlab = "time(months)", 
-           ylab = "surviVal of risk score",
-           legend.title = "Risk score")
 
 
 
