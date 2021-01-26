@@ -1,4 +1,39 @@
-# Multivariate Cox regression with three penalities including least absolute shrinkage and selection operator(Lasso), Adaptive lasso and Elastic net algorithms for informative prognostic-related genes selection.
+# Univarite analysis
+library(survival)
+dat1<-read.csv("datafileName.csv", header = T)
+dat2<-dat1[,-1]
+y<-dat2$os
+y<-as.numeric(y)
+x<-dat2[,-1:-2]
+event<-dat2$event
+event<-as.numeric(event)
+#**********************************************************************
+#Fit the coxph model 
+ans = apply(x,2,function(x,y,event)coxph(Surv(y,event)~x),y=y,event=event)
+
+# Extract data 
+univ_results <- lapply(ans,
+                       function(x){ 
+                         x <- summary(x)
+                         p.value<-signif(x$wald["pvalue"], digits=4)
+                         wald.test<-signif(x$wald["test"], digits=4)
+                         beta<-signif(x$coef[1], digits=4);#coeficient beta
+                         HR <-signif(x$coef[2], digits=4);#exp(beta)
+                         HR.confint.lower <- signif(x$conf.int[,"lower .95"], 4)
+                         HR.confint.upper <- signif(x$conf.int[,"upper .95"],4)
+                         HR <- paste0(HR, " (", 
+                                      HR.confint.lower, "-", HR.confint.upper, ")")
+                         res<-c(beta, HR, wald.test, p.value)
+                         names(res)<-c("beta", "HR (95% CI for HR)", "wald.test", 
+                                       "p.value")
+                         return(res)
+                         #return(exp(cbind(coef(x),confint(x))))
+                       })
+res <- t(as.data.frame(univ_results, check.names = FALSE))
+result<-as.data.frame(res) # results of uivariate Cox Regression Analysis 
+# Next, survival related genes used as inputfile for multivariate Cox Regression with Penalized Model
+
+# ** Multivariate Cox regression with three penalities including least absolute shrinkage and selection operator(Lasso), Adaptive lasso and Elastic net algorithms for informative prognostic-related genes selection.**
 # we need two Package in R 
 library(glmnet)
 library(survival)
