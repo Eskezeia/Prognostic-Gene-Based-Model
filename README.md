@@ -8,7 +8,7 @@
 > 2) GEne expression profiles from the gene expression omnibus (GEO)(https://www.ncbi.nlm.nih.gov/geo/) inccluding GSE112790, GSE84402, and GSE45267.
 > 3) International Cancer Genome Consortium (ICGC LIRI-JP dataset) dataset(https://icgc.org/)
 > 4) China Medical University Hospital HCC dataset
- > a). Surcival input file is:Survival 4-gene Profile
+ > a). 4-gene signture expression profiles of HCC and normal tissues.csv
  > b). Survival_4-gene expression-Profiles.csv
 
 
