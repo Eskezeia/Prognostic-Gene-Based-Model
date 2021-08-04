@@ -1,7 +1,6 @@
 ## **Paper "Construction and Validation of a Prognostic Gene-Based Model for Overall Survival Prediction in Hepatocellular Carcinoma Using an Integrated Statistical and Bioinformatic Approach"**
 
 
-## **Under Development**
 
 ## **Datasets used in this study**
 > 1) TCGA-LIHC dataset(http://gdac.broadinstitute.org/)
